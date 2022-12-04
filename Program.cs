@@ -31,6 +31,12 @@ namespace AdventOfCode2022
                     else
                         day = new Day3Part2();
                     break;
+                case 4:
+                    if (partInput == 1)
+                        day = new Day4Part1();
+                    else
+                        day = new Day4Part2();
+                    break;
                 default:
                     Console.WriteLine($@"Weird input, here is day ones result instead");
                     day = new Day1();
