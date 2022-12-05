@@ -52,6 +52,8 @@
     <Compile Include="Solutions\Day3Part1.cs" />
     <Compile Include="Solutions\Day3Part2.cs" />
     <Compile Include="Solutions\Day4Part1.cs" />
+    <Compile Include="Solutions\Day5Part2.cs" />
+    <Compile Include="Solutions\Day5Part1.cs" />
     <Compile Include="Solutions\Day4Part2.cs" />
   </ItemGroup>
   <ItemGroup>
