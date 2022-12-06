@@ -85,7 +85,6 @@ namespace AdventOfCode2022.Solutions
 
             return stackArray;
         }
-
         private Stack[] sortStackArray_(Stack[] stackToSort, List<string[]> instructions)
         {
             foreach (var instuction in instructions)
@@ -101,6 +100,7 @@ namespace AdventOfCode2022.Solutions
 
                 }
             }
+
             return stackToSort;
         }
     }

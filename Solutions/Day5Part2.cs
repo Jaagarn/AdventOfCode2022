@@ -47,7 +47,6 @@ namespace AdventOfCode2022.Solutions
                     {
                         if (stack.Count > 0)
                             result += stack.Peek();
-
                     }
 
                     file.Close();
@@ -106,7 +105,9 @@ namespace AdventOfCode2022.Solutions
                    stackToSort[toStack].Push(tempStack.Pop());
 
             }
+
             return stackToSort;
+
         }
     }
 }
