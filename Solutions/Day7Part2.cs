@@ -89,7 +89,6 @@ namespace AdventOfCode2022.Solutions
 
       Console.ReadKey();
     }
-
     private void handleCommand_(string command)
     {
       string[] args = command.Split(' ');

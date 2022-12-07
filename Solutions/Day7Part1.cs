@@ -81,7 +81,6 @@ namespace AdventOfCode2022.Solutions
 
       Console.ReadKey();
     }
-
     private void handleCommand_(string command)
     {
       string[] args = command.Split(' ');
@@ -121,7 +120,6 @@ namespace AdventOfCode2022.Solutions
 
       currentDir = newDir;
     }
-
     private void goThroughAllDirs_(LeafDir inputLeaf)
     {
       foreach(var dir in inputLeaf.ChildDirs)
