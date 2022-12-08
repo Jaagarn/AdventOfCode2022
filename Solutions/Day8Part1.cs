@@ -17,8 +17,6 @@ namespace AdventOfCode2022.Solutions
         using (StreamReader file = new StreamReader(textFile))
         {
           string ln;
-          int y = 0;
-          int x = 0;
 
           List<string> xRows = new List<string>();
 
@@ -28,15 +26,13 @@ namespace AdventOfCode2022.Solutions
           forrest = new Tree[xRows.Count, xRows[0].Length];
 
           for (int i = 0; i < xRows.Count; i++)
-          {
             for (int j = 0; j < xRows[i].Length; j++)
-            {
               forrest[i, j] = new Tree(xRows[i][j] - '0');
-            }
-          }
+
+          // The outmost rows are always visible
+          int howManyVisible = xRows.Count * 2 + xRows[0].Length * 2 - 4;
 
           for (int i = 1; i < xRows.Count - 1; i++)
-          {
             for (int j = 1; j < xRows[i].Length - 1; j++)
             {
               var currentTree = forrest[i, j];
@@ -47,10 +43,8 @@ namespace AdventOfCode2022.Solutions
               if (currentTree.Size <= forrest[i, j - 1].TallestTreeXMinus)
                 currentTree.TallestTreeXMinus = forrest[i, j - 1].TallestTreeXMinus;
             }
-          }
 
           for (int i = xRows.Count - 2; i > 0; i--)
-          {
             for (int j = xRows[i].Length - 2; j > 0; j--)
             {
               var currentTree = forrest[i, j];
@@ -60,22 +54,10 @@ namespace AdventOfCode2022.Solutions
 
               if (currentTree.Size <= forrest[i, j + 1].TallestTreeXPlus)
                 currentTree.TallestTreeXPlus = forrest[i, j + 1].TallestTreeXPlus;
-            }
-          }
 
-          // The outmost rows are always visible
-          int howManyVisible = xRows.Count * 2 + xRows[0].Length * 2 - 4;
-
-          for (int i = 1; i < xRows.Count - 1; i++)
-          {
-            for (int j = 1; j < xRows[i].Length - 1; j++)
-            {
-              if (forrest[i, j].IsVisable)
-              {
+              if (forrest[i, j].IsVisible)
                 howManyVisible++;
-              }
             }
-          }
 
           Console.WriteLine($"Amount of visible trees: {howManyVisible}");
 
@@ -96,9 +78,7 @@ namespace AdventOfCode2022.Solutions
       {
         this.size = size;
       }
-
       public int Size => size;
-
       public int TallestTreeYPlus
       {
         get
@@ -155,7 +135,7 @@ namespace AdventOfCode2022.Solutions
           tallestTreeXMinus = value;
         }
       }
-      public bool IsVisable
+      public bool IsVisible
       {
         get
         {

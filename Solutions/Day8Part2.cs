@@ -17,8 +17,6 @@ namespace AdventOfCode2022.Solutions
         using (StreamReader file = new StreamReader(textFile))
         {
           string ln;
-          int y = 0;
-          int x = 0;
 
           List<string> xRows = new List<string>();
 
@@ -31,16 +29,12 @@ namespace AdventOfCode2022.Solutions
           forrest = new Tree[ySize, xSize];
 
           for (int i = 0; i < ySize; i++)
-          {
             for (int j = 0; j < xSize; j++)
-            {
               forrest[i, j] = new Tree(xRows[i][j] - '0');
-            }
-          }
 
+          int bestView = 1;
           // No need to count the outer circle. Everyone has a basescore of 1 since they can atleast see 1 tree in each direction
           for (int i = 1; i < ySize - 1; i++)
-          {
             for (int j = 1; j < xSize - 1; j++)
             {
               var currentTree = forrest[i, j];
@@ -84,19 +78,9 @@ namespace AdventOfCode2022.Solutions
 
               forrest[i, j].Score = yPlusScore * yMinScore * xPlusScore * xMinScore;
 
-            }
-          }
-
-          int bestView = 1;
-
-          for (int i = 1; i < ySize-1; i++)
-          {
-            for (int j = 1; j < xSize-1; j++)
-            {
-              if(forrest[i, j].Score > bestView)
+              if (forrest[i, j].Score > bestView)
                 bestView = forrest[i, j].Score;
             }
-          }
 
           Console.WriteLine($"The best view score is: {bestView}");
           file.Close();
@@ -112,11 +96,8 @@ namespace AdventOfCode2022.Solutions
       {
         this.size = size;
       }
-
       public int Size => size;
-
       public int Score { get; set; }
-
     }
   }
 }
