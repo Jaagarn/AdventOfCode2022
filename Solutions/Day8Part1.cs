@@ -72,7 +72,6 @@ namespace AdventOfCode2022.Solutions
             {
               if (forrest[i, j].IsVisable)
               {
-                Console.WriteLine($"Current Tree: '{i}', '{j}' is visable");
                 howManyVisible++;
               }
             }
